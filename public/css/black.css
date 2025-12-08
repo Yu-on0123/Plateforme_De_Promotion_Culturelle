@@ -1,0 +1,113 @@
+/* === Global Settings === */
+body {
+    background-color: #121212;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* === Navbar === */
+.navbar {
+    background-color: #1f1f1f;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+}
+
+.navbar .nav-link {
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.navbar .nav-link:hover {
+    color: #00d1b2;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #00d1b2;
+}
+
+/* === Sidebar === */
+.sidebar {
+    width: 220px;
+    min-height: 100vh;
+    background-color: #1f1f1f;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 80px;
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+.sidebar .logo h4 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #00d1b2;
+}
+
+.sidebar .nav-link {
+    color: #fff;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #00d1b2;
+    color: #121212;
+    border-radius: 8px;
+}
+
+/* === Page Title === */
+.page-title h2 {
+    font-weight: 600;
+    border-left: 4px solid #00d1b2;
+    padding-left: 12px;
+    margin-bottom: 20px;
+}
+
+/* === Cards === */
+.card {
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #1abc9c, #16a085);
+}
+.bg-gradient-success {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+.bg-gradient-warning {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+/* === Footer === */
+.footer {
+    background-color: #1f1f1f;
+    text-align: center;
+}
+
+.footer a {
+    color: #00d1b2;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #fff;
+}
+
+/* === Utility Classes === */
+.text-white { color: #fff !important; }
+.bg-black { background-color: #121212 !important; }
+
+/* === Smooth transition for all links === */
+a {
+    transition: color 0.3s, background-color 0.3s;
+}
