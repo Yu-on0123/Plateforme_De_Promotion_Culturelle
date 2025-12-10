@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["php82", "php82Packages.composer", "nodejs_22", "bash", "coreutils"]
+nixPkgs = ["php82", "php82Packages.composer", "nodejs_22", "bash", "coreutils", "mysql80"]
 
 [phases.install]
 cmds = [
@@ -22,5 +22,5 @@ cmds = [
 ]
 
 [start]
-# Attendre la DB, puis migrations + seeds + serveur
-cmd = "for i in {1..30}; do php artisan db:show --quiet && break || (echo 'Attente DB...' && sleep 2); done && php artisan migrate:fresh --seed --force && php artisan storage:link --force && php artisan serve --host=0.0.0.0 --port=$PORT"
+# Test de connexion MySQL avec retry, puis migrations + seeds + serveur
+cmd = "bash -c 'echo \"Attente MySQL...\"; for i in {1..30}; do mysqladmin ping -h\"$DB_HOST\" -P\"$DB_PORT\" -u\"$DB_USERNAME\" -p\"$DB_PASSWORD\" --silent && echo \"✅ MySQL connecté!\" && break || (echo \"Tentative $i/30...\"; sleep 2); done && php artisan migrate:fresh --seed --force && php artisan storage:link --force && php artisan serve --host=0.0.0.0 --port=$PORT'"
