@@ -22,5 +22,5 @@ cmds = [
 ]
 
 [start]
-# Migrations normales (préserve les données) + Démarrage serveur
-cmd = "php artisan migrate --force && php artisan storage:link --force && php artisan serve --host=0.0.0.0 --port=$PORT"
+# Attendre la DB, puis migrations + seeds + serveur
+cmd = "for i in {1..30}; do php artisan db:show --quiet && break || (echo 'Attente DB...' && sleep 2); done && php artisan migrate:fresh --seed --force && php artisan storage:link --force && php artisan serve --host=0.0.0.0 --port=$PORT"
