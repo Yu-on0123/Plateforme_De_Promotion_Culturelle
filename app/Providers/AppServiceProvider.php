@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\URL;
 // Modèles
 use App\Models\Langue;
 use App\Models\Contenu;
@@ -34,6 +35,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
         // Définir une Gate pour l'accès admin
         Gate::define('access-admin', function ($user) {
             return $user->role === 'admin'; // Assure-toi d'avoir un champ 'role' dans users
